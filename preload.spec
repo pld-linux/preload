@@ -1,11 +1,12 @@
 Summary:	Adaptive readahead daemon
 Name:		preload
 Version:	0.2
-Release:	0.2
+Release:	0.3
 License:	GPL
 Group:		Daemons
 Source0:	http://dl.sourceforge.net/preload/%{name}-%{version}.tar.gz
 # Source0-md5:	8df1c86c43b8976dc6ee5d45e8ac901c
+Source1:	%{name}.init
 Patch0:		%{name}-build.patch
 URL:		http://preload.sourceforge.net/
 BuildRequires:	autoconf
@@ -40,6 +41,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_localstatedir}/lib/preload
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/preload
 
 %clean
 rm -rf $RPM_BUILD_ROOT
