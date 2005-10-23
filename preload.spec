@@ -15,6 +15,7 @@ BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.228
+BuildRequires:	sed >= 4.0
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,6 +35,9 @@ szybszego ich uruchamiania.
 %prep
 %setup -q
 %patch0 -p1
+
+sed -i -e 's,^pkglocalstatedir=.*,pkglocalstatedir=%{_localstatedir}/lib/misc,' \
+	configure.ac
 
 %build
 %{__aclocal}
