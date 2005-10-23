@@ -28,7 +28,7 @@ case "$1" in
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/preload ]; then
 		msg_starting preload
-	    daemon /usr/sbin/preload $PRELOAD_OPTS
+	    daemon /usr/sbin/preload $PRELOAD_OPTS --statefile /var/lib/misc/preload.state
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/preload
 	else

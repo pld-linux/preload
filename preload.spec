@@ -1,7 +1,7 @@
 Summary:	Adaptive readahead daemon
 Name:		preload
 Version:	0.2
-Release:	0.3
+Release:	0.4
 License:	GPL
 Group:		Daemons
 Source0:	http://dl.sourceforge.net/preload/%{name}-%{version}.tar.gz
@@ -40,7 +40,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_localstatedir}/lib/preload
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/preload
 
 %clean
@@ -67,5 +66,4 @@ fi
 %attr(754,root,root) /etc/rc.d/init.d/preload
 %attr(644,root,root) /etc/logrotate.d/preload
 %attr(600,root,root) %verify(not md5 mtime size) %config(missingok,noreplace) %{_localstatedir}/log/preload.log
-%attr(770,root,root) %dir %{_localstatedir}/lib/preload
 %attr(660,root,root) %verify(not md5 mtime size) %ghost %config(missingok,noreplace) %{_localstatedir}/preload/preload.state
