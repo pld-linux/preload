@@ -1,0 +1,11 @@
+--- ./src/Makefile.am~	2005-09-01 04:38:24.000000000 +0300
++++ ./src/Makefile.am	2005-10-23 03:02:21.000000000 +0300
+@@ -46,7 +46,7 @@
+ DISTCLEANFILES = preload.conf preload.state preload.log
+ nodist_sysconf_DATA = preload.conf
+ preload.conf: gen.preload.conf.sh preload.conf.in confkeys.h
+-	. $^ > $@
++	sh $^ > $@
+ 
+ 
+ MAINTAINERCLEANFILES = preload.8
