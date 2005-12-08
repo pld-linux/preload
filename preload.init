@@ -12,9 +12,6 @@
 # Source function library
 . /etc/rc.d/init.d/functions
 
-# Get network config
-. /etc/sysconfig/network
-
 # Get service config - may override defaults
 [ -f /etc/sysconfig/preload ] && . /etc/sysconfig/preload
 
