@@ -76,6 +76,6 @@ fi
 %{_mandir}/man8/preload.8*
 %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/preload
 %attr(754,root,root) /etc/rc.d/init.d/preload
-%attr(644,root,root) /etc/logrotate.d/preload
+/etc/logrotate.d/preload
 %attr(600,root,root) %verify(not md5 mtime size) %config(missingok,noreplace) %{_localstatedir}/log/preload.log
 %attr(660,root,root) %verify(not md5 mtime size) %ghost %config(missingok,noreplace) %{_localstatedir}/lib/misc/preload.state
