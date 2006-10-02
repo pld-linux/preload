@@ -1,12 +1,12 @@
 Summary:	Adaptive readahead daemon
 Summary(pl):	Adaptacyjny demon czytania z wyprzedzeniem
 Name:		preload
-Version:	0.2
-Release:	0.4
+Version:	0.4
+Release:	1
 License:	GPL
 Group:		Daemons
 Source0:	http://dl.sourceforge.net/preload/%{name}-%{version}.tar.gz
-# Source0-md5:	8df1c86c43b8976dc6ee5d45e8ac901c
+# Source0-md5:	9c98bc97ec261925c9a40e5084c9c149
 Source1:	%{name}.init
 Patch0:		%{name}-build.patch
 URL:		http://preload.sourceforge.net/
@@ -36,7 +36,7 @@ szybszego ich uruchamiania.
 %setup -q
 %patch0 -p1
 
-sed -i -e 's,^pkglocalstatedir=.*,pkglocalstatedir=%{_localstatedir}/lib/misc,' \
+%{__sed} -i -e 's,^pkglocalstatedir=.*,pkglocalstatedir=%{_localstatedir}/lib/misc,' \
 	configure.ac
 
 %build
