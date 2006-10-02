@@ -8,20 +8,17 @@
 #
 # $Id$
 
-
 # Source function library
 . /etc/rc.d/init.d/functions
 
 # Get service config - may override defaults
 [ -f /etc/sysconfig/preload ] && . /etc/sysconfig/preload
 
-MIN_MEMORY=${MIN_MEMORY:-256}
-# Check for > MIN_MEMORY MB
-free -m | awk '/Mem:/ {exit ($2 >= ('"$MIN_MEMORY"'))?0:1}' || exit 0
+start() {
+	MIN_MEMORY=${MIN_MEMORY:-256}
+	# Check for > MIN_MEMORY MB
+	free -m | awk '/Mem:/ {exit ($2 >= ('"$MIN_MEMORY"'))?0:1}' || exit 0
 
-# See how we were called.
-case "$1" in
-  start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/preload ]; then
 		msg_starting preload
@@ -31,8 +28,9 @@ case "$1" in
 	else
 		msg_already_running preload
 	fi
-	;;
-  stop)
+}
+
+stop() {
 	if [ -f /var/lock/subsys/preload ]; then
 		# Stop daemons.
 		msg_stopping preload
@@ -41,26 +39,33 @@ case "$1" in
 	else
 		msg_not_running preload
 	fi
-	;;
-  restart)
-	$0 stop
-	$0 start
-	exit $?
-	;;
-  reload)
+}
+
+reload() {
 	if [ -f /var/lock/subsys/preload ]; then
 		msg_reloading preload
 		killproc preload -HUP
 		RETVAL=$?
 	else
-		msg_not_running preload >&2
+		msg_not_running preload
 		RETVAL=7
 	fi
+}
+
+# See how we were called.
+case "$1" in
+  start)
+  	start
 	;;
-  force-reload)
-	# if program allows reloading without stopping
-	$0 reload
-	exit $?
+  stop)
+  	stop
+	;;
+  restart)
+	stop
+	start
+	;;
+  reload|force-reload)
+  	reload
 	;;
   status)
 	status preload
