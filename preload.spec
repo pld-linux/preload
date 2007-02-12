@@ -1,5 +1,5 @@
 Summary:	Adaptive readahead daemon
-Summary(pl):	Adaptacyjny demon czytania z wyprzedzeniem
+Summary(pl.UTF-8):   Adaptacyjny demon czytania z wyprzedzeniem
 Name:		preload
 Version:	0.4
 Release:	1
@@ -25,11 +25,11 @@ users run, and by analyzing this data, predicts what applications
 users might run, and fetches those binaries and their dependencies
 into memory for faster startup times.
 
-%description -l pl
+%description -l pl.UTF-8
 preload to adaptacyny demon czytania z wyprzedzeniem. Monitoruje
-aplikacje uruchamiane przez u¿ytkowników i, poprzez analizê tych
-danych, przewiduje które aplikacje u¿ytkownicy mog± uruchamiaæ, a
-nastêpnie pobiera te binaria i ich zale¿no¶ci do pamiêci w celu
+aplikacje uruchamiane przez uÅ¼ytkownikÃ³w i, poprzez analizÄ™ tych
+danych, przewiduje ktÃ³re aplikacje uÅ¼ytkownicy mogÄ… uruchamiaÄ‡, a
+nastÄ™pnie pobiera te binaria i ich zaleÅ¼noÅ›ci do pamiÄ™ci w celu
 szybszego ich uruchamiania.
 
 %prep
