@@ -1,5 +1,5 @@
 Summary:	Adaptive readahead daemon
-Summary(pl.UTF-8):   Adaptacyjny demon czytania z wyprzedzeniem
+Summary(pl.UTF-8):	Adaptacyjny demon czytania z wyprzedzeniem
 Name:		preload
 Version:	0.4
 Release:	1
