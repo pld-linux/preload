@@ -13,6 +13,7 @@ URL:		http://preload.sourceforge.net/
 BuildRequires:	autoconf >= 2.56
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0.0
+BuildRequires:	help2man
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.228
 BuildRequires:	sed >= 4.0
