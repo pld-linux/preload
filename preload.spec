@@ -46,7 +46,7 @@ szybszego ich uruchamiania.
 %{__autoheader}
 %{__automake}
 %configure
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
