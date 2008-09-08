@@ -19,10 +19,21 @@ start() {
 	# Check for > MIN_MEMORY MB
 	free -m | awk '/Mem:/ {exit ($2 >= ('"$MIN_MEMORY"'))?0:1}' || exit 0
 
+	# Check for ionice and use idle scheduling if available
+	RUNAS=""
+	IONICE="/usr/bin/ionice"
+	if [ -n "$IONICE_OPTS" ]; then
+		if [ -x "$IONICE" ]; then
+			RUNAS="$IONICE $IONICE_OPTS"
+		else
+			nls "ionice not found, running with normal IO priority" >&2
+		fi
+	fi
+
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/preload ]; then
 		msg_starting preload
-	    daemon /usr/sbin/preload $PRELOAD_OPTS --statefile /var/lib/misc/preload.state
+		daemon $RUNAS /usr/sbin/preload $PRELOAD_OPTS --statefile /var/lib/misc/preload.state
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/preload
 	else
@@ -55,17 +66,17 @@ reload() {
 # See how we were called.
 case "$1" in
   start)
-  	start
+	start
 	;;
   stop)
-  	stop
+	stop
 	;;
   restart)
 	stop
 	start
 	;;
   reload|force-reload)
-  	reload
+	reload
 	;;
   status)
 	status preload
