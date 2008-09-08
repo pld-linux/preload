@@ -1,12 +1,12 @@
 Summary:	Adaptive readahead daemon
 Summary(pl.UTF-8):	Adaptacyjny demon czytania z wyprzedzeniem
 Name:		preload
-Version:	0.4
+Version:	0.6.3
 Release:	1
 License:	GPL
 Group:		Daemons
 Source0:	http://dl.sourceforge.net/preload/%{name}-%{version}.tar.gz
-# Source0-md5:	9c98bc97ec261925c9a40e5084c9c149
+# Source0-md5:	4ebb8463b3b7a323ad8b7ffe89578f6e
 Source1:	%{name}.init
 Patch0:		%{name}-build.patch
 URL:		http://preload.sourceforge.net/
@@ -71,7 +71,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc README AUTHORS ChangeLog TODO THANKS NEWS doc/*.txt
+%doc AUTHORS ChangeLog NEWS README README-alpha THANKS TODO doc/*.txt
 %attr(755,root,root) %{_sbindir}/preload
 %config %{_sysconfdir}/preload.conf
 %{_mandir}/man8/preload.8*
