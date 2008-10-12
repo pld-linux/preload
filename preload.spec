@@ -2,7 +2,7 @@ Summary:	Adaptive readahead daemon
 Summary(pl.UTF-8):	Adaptacyjny demon czytania z wyprzedzeniem
 Name:		preload
 Version:	0.6.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		Daemons
 Source0:	http://dl.sourceforge.net/preload/%{name}-%{version}.tar.gz
