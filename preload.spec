@@ -2,7 +2,7 @@ Summary:	Adaptive readahead daemon
 Summary(pl.UTF-8):	Adaptacyjny demon czytania z wyprzedzeniem
 Name:		preload
 Version:	0.6.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		Daemons
 Source0:	http://dl.sourceforge.net/preload/%{name}-%{version}.tar.gz
@@ -53,6 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/preload
+rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
